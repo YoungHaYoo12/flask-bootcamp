@@ -25,5 +25,9 @@ def puppy_latin(name):
   
   return "<h1>Your puppy latin name is: {}</h1>".format(pupname)
 
+@app.route('/home')
+def home():
+  return render_template('home.html')
+
 if __name__ == '__main__':
   app.run('0.0.0.0',8080, debug=True)
