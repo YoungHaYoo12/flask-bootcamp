@@ -15,12 +15,14 @@
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
       </button>
-      {{mess}}
+      {{mess}}{{session['breed']}}
     </div>  
   {% endfor %}
 
   <form method="POST">
     {{form.hidden_tag()}}
+    {{form.breed.label}}{{form.breed}}
+    <br>
     {{form.submit()}}
   </form>
 
