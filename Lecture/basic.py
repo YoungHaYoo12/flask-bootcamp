@@ -16,6 +16,10 @@ def thank_you():
   last = request.args.get('last')
 
   return render_template('thank_you.html',first=first,last=last)
-  
+
+@app.errorhandler(404)
+def page_not_found(e):
+  return render_template('404.html')
+
 if __name__ == '__main__':
   app.run('0.0.0.0',8080, debug=True)
