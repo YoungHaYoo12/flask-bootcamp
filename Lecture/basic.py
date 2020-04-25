@@ -14,5 +14,16 @@ def info():
 def puppy(name):
   return "<h1>This is a page for {}</h1>".format(name.upper())
 
+@app.route('/puppy_latin/<name>')
+def puppy_latin(name):
+  pupname = ''
+
+  if name[-1] == 'y':
+    pupname = name[:-1] + 'iful'
+  else:
+    pupname = name + 'y'
+  
+  return "<h1>Your puppy latin name is: {}</h1>".format(pupname)
+
 if __name__ == '__main__':
   app.run('0.0.0.0',8080, debug=True)
