@@ -15,7 +15,7 @@ class InfoForm(FlaskForm):
   submit = SubmitField('Submit')
 
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def index():
   form = InfoForm()
   if form.validate_on_submit():
