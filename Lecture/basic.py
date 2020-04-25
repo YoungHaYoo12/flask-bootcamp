@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request
+from flask import (Flask, render_template, request,session,redirect,url_for)
 from flask_wtf import FlaskForm
-from wtforms import (StringField, BooleanField, DateTimeField,RadioField,SelectField,TextField,TextAreaField,SubmitField)
+from wtforms import (StringField, BooleanField,RadioField,SelectField,TextAreaField,SubmitField)
 from wtforms.validators import DataRequired 
 
 app = Flask(__name__)
@@ -17,7 +17,18 @@ class InfoForm(FlaskForm):
 
 @app.route('/')
 def index():
-  return render_template('index.html')
+  form = InfoForm()
+  if form.validate_on_submit():
+    session['breed'] = form.breed.data
+    session['neutered'] = form.neutered.data
+    session['mood'] = form.mood.data
+    session['food'] = form.food_choice.data
+    session['feedback'] = form.feedback.data
+
+    return redirect(url_for('thank_you'))
+
+
+  return render_template('index.html',form=form)
 
 @app.route('/signup')
 def signup():
