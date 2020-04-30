@@ -29,7 +29,7 @@ def login():
       login_user(user)
       flash('You Have Been Successfully Logged In')
 
-      next = request.args.next('next')
+      next = request.args.get('next')
       if next == None or not next[0] == '/':
         next = url_for('core.index')
       
